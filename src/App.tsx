@@ -14,7 +14,7 @@ import { ChatGuide } from './components/ChatGuide';
 import { CropManagerModal } from './components/CropManagerModal';
 import { TelemetryReading, SoilClassificationResult, CropPreset } from './types';
 import { classifySoil, buildSpokenSummary, DEFAULT_CROP_PRESETS } from './utils/soilClassifier';
-import {
+import { Radio, Volume2, VolumeX, Sparkles, Sprout, Settings2 } from 'lucide-react';import { supabase } from './supabase';
   playChime,
   playConnectedSound,
   playSensorLandedSound,
@@ -166,7 +166,31 @@ export default function App() {
   const [chatPromptTrigger, setChatPromptTrigger] = useState<string | undefined>(undefined);
 
   const liveTimerRef = useRef<NodeJS.Timeout | null>(null);
+// Fetch latest sensor data from Supabase
+useEffect(() => {
+  const fetchLatestReading = async () => {
+    const { data } = await supabase
+      .from('sensor_readings')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(1);
 
+    if (data && data.length > 0) {
+      setMoisture(data[0].moisture);
+      setTemp(data[0].temperature);
+      setPh(data[0].ph);
+      setHasData(true);
+      setIsConnected(true);
+      setIsLanded(true);
+      setSignalState('landed');
+      setStatusText('May datos mula sa drone!');
+    }
+  };
+
+  fetchLatestReading();
+  const interval = setInterval(fetchLatestReading, 5000);
+  return () => clearInterval(interval);
+}, []);
   // Update clock every second
   useEffect(() => {
     const updateTime = () => {
