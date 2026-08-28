@@ -1,0 +1,8 @@
+{
+  "name": "EastAi — Drone Soil Telemetry",
+  "description": "Smart drone soil telemetry monitoring system and AI agricultural field guide (Eastee) for soil moisture, temperature, and pH analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

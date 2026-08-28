@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #F8FAF5;
+    --panel: #FFFFFF;
+    --panel-alt: #F1F6EE;
+    --panel-subtle: #F9FBF8;
+    --line: #E2EAD8;
+    --line-subtle: #EDF3E7;
+    --ink: #2C3E2D;
+    --ink-dim: #6E7D6A;
+    --green: #4D8B43;
+    --green-soft: #E8F5E4;
+    --green-deep: #32642B;
+    --rose: #E11D48;
+    --rose-soft: #FFE4E6;
+    --rose-deep: #BE123C;
+    --amber: #D97706;
+    --amber-soft: #FEF3C7;
+    --amber-deep: #B45309;
+    --sky: #0284C7;
+    --sky-soft: #E0F2FE;
+  }
+
+  body {
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--ink);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@keyframes bobSlow {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+@keyframes beamDash {
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes travelPulse {
+  0% { opacity: 0; transform: translateY(0); }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(74px); }
+}
+
+@keyframes softPulse {
+  0% { box-shadow: 0 0 0 0 rgba(77, 139, 67, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(77, 139, 67, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(77, 139, 67, 0); }
+}
+
+.animate-bob {
+  animation: bobSlow 3.2s ease-in-out infinite;
+}
+
+.animate-beam {
+  animation: beamDash 1.1s linear infinite;
+}
+
+.animate-travel {
+  animation: travelPulse 1.1s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: softPulse 2s infinite;
+}
+
+
