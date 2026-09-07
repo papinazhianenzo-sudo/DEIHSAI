@@ -3,7 +3,7 @@
 // Ito ang endpoint na tatanggap ng POST request mula sa ESP32.
 // URL nito pagkatapos ma-deploy: https://<yoursite>.netlify.app/.netlify/functions/sensor-data
 
-exports.handler = async function (event, context) {
+export const handler = async (event, context) => {
   // Tanggapin lang ang POST requests
   if (event.httpMethod !== "POST") {
     return {
